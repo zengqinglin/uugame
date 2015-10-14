@@ -1,0 +1,76 @@
+  * 通配符     所有				0.5
+
+  标签选择器	p{}			        1
+  class类选择器  .container{}                    10
+  id选择器       #new{}                         100
+  并列选择器	 div，p，a{}                     
+  包含选择器	 ul li{}                         1 +1
+  范围           div.container{}                 10
+
+
+-----------------------------------选择器优先
+
+
+
+---------------------------表单的属性
+			type   text | password | radio   | checkbox |submit | reset|  button   |file| url
+                                data |time  |range| number | color| email 
+			checked    selected
+                         placeholder 提示文本    required 必填     pattern  格式   |   autofocus 自动获得 
+                         novalidate  不需要验证
+
+
+
+
+
+----------------------------长度单位
+
+				px     像素
+				百分比  相对的于父亲元素
+                                em	当前元素一个文字的大小
+                                rem    当前根元素的一个文字大小（css3   ie9 以下不支持）
+
+-----------------------------颜色表现
+				16 进制      #FFFFFF   #fff   [0-9a-f]
+                                rgb	     rgb（255,255,255）   红   绿  蓝
+				rgb	      rgb（100%，0% ，0%）
+				英文单词      red blue green yellow brown  purple gray  sliver  white
+				rgba           rgba(255,0,0,0.2);   红   绿  蓝  透明度     1 不透明  0 完全透明 
+			        hsla          hsla（0-180,0-100,0-100,0-1 ） 色相 饱和度 明度 透明度  （不要去掌握）
+
+
+-----------------------------字体
+				font-family   字体		"Microsoft Yahe","sim song" 微软雅黑  宋体
+				font-size	大小             px  em rem
+				font-style    样式		 normal italic  正常 斜体
+				font-weight	粗细		 bold bolder lighter 100-900 粗 特粗 特细 
+				text-decoration  文字装饰	 none  line-through overline underline 没有 删 上  下
+				line-height	行高             px em
+				text-transform   文字转换        uppercase lowercase capitalize 大 小 首
+				letter-spacing     字母 文字间距  px  em rem
+				word-spacing	   单词间距      px  em rem
+				text-indent       文字缩进       2em 
+				text-align	文字对齐        left right center justify   左 右 中 对齐
+				
+		
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+				
+ 
+ 

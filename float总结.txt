@@ -1,0 +1,178 @@
+	元素的宽度：内容（content）+内补丁（padding  边框到内容间的宽度）+边框的宽度
+		    500		   +100*2+10*2=720px
+
+	元素和元素间（边框和边框间）垂直的距离是 取两个元素的 margin值中最大的值
+	元素和元素间（边框和边框间）水平的距离是 取两个元素的 margin值的和
+
+	padding（内补丁）：边框到自己的内容（文字，子元素）之间的距离
+	margin：
+		情况一： [兄弟元素] 自己 和兄弟元素间的距离 横向margin相加 纵向margin取最大值
+		情况二： [父亲元素] 和父亲元素的距离 父亲padding+子元素的margin  100+70=170
+
+	要想父亲元素和子元素产生距离可以用两种方法
+	一、用父亲元素的padding 注意 用这种方法（会增加父亲元素的大小）
+	二、用子元素的margin   注意 用这种方法（每一个子元素都要设置同样的margin）
+	三、用父亲元素的padding +用子元素的margin
+
+
+
+
+先声明的浮动元素有优先靠近父元素左上角或者右上角（规则2）位置的权利
+
+如果有多个相同方向的浮动元素，浮动元素也会尽可能的靠近左上角或者右上角，直到父元素宽度没法放下这个元素的时候，这个元素才会被挤下去。
+
+
+
+css 选择器 
+
+*  统配符      所有					0.5
+   标签        p，div  代表选择网页中的一种标签		1
+#id id选择器	网页中一个id名唯一的元素  		100 
+.类   类选择器	网页中的一类 取class=“”；		10
+A，B   并列选择器  代表  选择器A和B使用一样的css	a的权重 |B的权重
+A B   包含选择器   代表	 选择器B必须被选择器A包含	a的权重 +B的权重
+
+标签A.B  代表B必须满足标签A				B的权重
+ color：red ！important;				!important 权重最高
+
+
+
+<link type="text/css" rel="stylesheet" href="reset.css"> 外链 样式
+@ import url('reset.css'); 导入样式
+<style type="text/css"></style> 内嵌样式
+<div  style="border:1px solid red"> 行内样式 >
+优先级别   一般 行内样式  > 内嵌样式>外链
+	   离内容越近 优先级别越高
+
+
+font：样式  粗细    大小 /行高  字体
+font：normal bold   24px/1.8em  ‘microsoft Yahei';
+
+font-family:	字体
+font-size	大小
+font-style	样式      normal   italic
+font-weight	粗细	  bold bolder lighter   100-900
+
+
+text-transform	文字转换	lowercase uppercase   capitalize    小写  大写  首字母打写		
+text-decoration 文字的装饰	overline underline none line-through     上线  下线 没有  删除
+text-indent	文字缩进	
+text-align	对齐		center   right   left   justify
+line-height	行高
+letter-spacing  字母间距 汉字间距
+word-spacing	单词间距
+
+------------------------------------css的继承 
+css中子元素会继承父亲元素的文本样式  但是  a不会继承color decoration   em 不继承 font-style
+h1-h6 不会继承 font-weight font-size
+
+------------------------------------一个元素的实际宽度
+内容+内补丁+边框的宽度
+
+内补丁 padding   边框到自己内容（文字或者子元素）的距离
+外补丁 margin	  1 自己的边框到兄弟元素的距离 
+		  2 自己的边框到父亲元素的左上角的距离
+兄弟元素间的 距离横向  margin相加
+                  纵向	取最大值
+
+子元素和父亲元素有一段距离：1   父亲元素设置padding	（会增加父亲元素的大小 只用设置一次）
+		            2    子元素设置margin	（父亲的每一个子元素都要设置）
+			    3   父亲元素padding+子元素margin
+
+行内元素可以设置宽高吗？ 不可以
+行内元素可以设置padding ？
+行内元素可以设置margin  marin 上下   和margin 左右都可以设置吗？
+
+
+块级元素默认的宽是父亲元素的宽
+        默认占一行
+浮动后  宽度不在占一行，兄弟元素会占居它的位置  兄弟元素的文本会 留出 它实际的宽度
+        浮动元素自己靠父亲元素的左边（float：left） 右边（float：right）排列
+ 父亲元素的高度由子元素的高度决定  如果浮动后不再参与父亲元素的高度计算
+如果父亲元素所有的子元素都浮动了，父亲元素就没有高度了
+给父亲元素添加 clearfix  这个class
+.clearfix:after{ content:""; display:block; clear:both; height:0px; visibility:hidden;}
+
+
+1、对于它的父元素来说，浮动元素是不存在的
+   对于兄弟元素也认为它不存在   兄弟元素会占居它的位置  兄弟元素的文本会 留出 它实际的宽度
+
+2、一个浮动元素的位置会尽可能的靠近他父元素的左上角或者右上角
+	float: left的元素会尽量靠近父元素的左上角
+        float: right的元素会尽量靠近父元素的右上角
+3、浮动元素前面定义的元素会把浮动元素挤到下面
+   但是如果浮动元素前面有相邻元素的话，不管是inline的或者block的，都会把浮动元素挤到下面
+4、先声明的浮动元素有优先靠近父元素左上角或者右上角（规则2）位置的权利
+5、规则2的拓展
+   如果有多个相同方向的浮动元素，浮动元素也会尽可能的靠近左上角或者右上角，直到父元素宽度没法放下这个元素的时候，这个   元素才会被挤下去。
+6、inline元素添加浮动属性会拥有block特性（可以添加宽高等。）
+7、  浮动元素不会跑出父元素的边界
+
+行内元素 默认不能设置宽高 能设置margin 左右不能设置margin 上下   可以设置padding
+
+
+position：relative；相对定位  
+	默认元素写position：relative 元素是没有位置变化的；
+		  position：left:250px; top:50px;  改变元素的位置
+		  参照点是：元素原来位置的左上角。
+	          兄弟元素和父亲元素不受影响，认为它还在原来的位置
+
+position：absolute；绝对定位 
+		   它的宽度是它的文字的内容宽度（不会占满父亲元素的宽度）
+		   position：left:250px; top:50px;  改变元素的位置 
+		   兄弟元素和父亲元素都会认为它不存在，兄弟元素会占据他的位置，
+
+		   参照点是：1，body元素，页面的左上角。
+			     2，如果父辈元素[最近的]写过postion属性 它以该父辈元素为左上角为参照点。 position：relave； postion：absolute；  postion：fixed（ie6不支持）
+		   不会固定在屏幕上面
+
+
+position：fixed；固定定位 
+		   它的宽度是它的文字的内容宽度（不会占满父亲元素的宽度）
+		   position：left:250px; top:50px;  改变元素的位置 
+		   兄弟元素和父亲元素都会认为它不存在，兄弟元素会占据他的位置，
+
+		   参照点是：浏览器显示区域的左上角
+                    会固定在屏幕的某一点上
+
+什么时候使用 pisition属性呢？
+		当元素要发生重叠时候
+		用relative 不影响兄弟元素和父亲元素
+		用absolute  自己高度不会增加父亲元素的高度
+		用fixed     希望固定在屏幕的某一点时候
+
+当元素发生重叠式 看z-index 值 （没有单位）  值越大越在前面值越小越在后面  
+z-index 只有当元素写postion 才管用
+
+
+                  
+		      
+
+
+
+
+ 
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
